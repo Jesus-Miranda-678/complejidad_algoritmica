@@ -40,7 +40,7 @@ def generar_mapa_graphviz_coordenadasa(la, ruta_nodos_csv, ruta_optima=[]):
     """
     dot = graphviz.Graph(engine='neato')
     
-    # 1. OPTIMIZACIÓN CRÍTICA:
+ 
 
     dot.attr(dpi='70', splines='false')
     
@@ -95,16 +95,14 @@ def generar_mapa_graphviz_coordenadasa(la, ruta_nodos_csv, ruta_optima=[]):
 
 
 
-# ==========================================
-# 4. INTERFAZ DE USUARIO (SIDEBAR Y MAIN)
-# ==========================================
+
 st.set_page_config(page_title="Optimizador de Rutas Logísticas", layout="wide")
 st.title("📦 Sistema de Enrutamiento - Order Picking")
 
 with st.sidebar:
     st.header("⚙️ Configuración de la Ruta")
     
-    # NUEVO: Input para la ubicación inicial
+    #Input para la ubicación inicial
     default_index = lista_ubicaciones_inicio.index("NAV_0_0") if "NAV_0_0" in lista_ubicaciones_inicio else 0
     punto_inicio_operador = st.selectbox(
         "📍 Ubicación inicial del operador:",
@@ -117,7 +115,7 @@ with st.sidebar:
     archivo_csv = st.file_uploader("📂 Insertar CSV Lista de pedidos", type=["csv"])
    
     
-    # CORRECCIÓN: Ahora usa la lista generada desde el CSV de nodos con sectores
+    #lista generada desde el CSV de nodos con sectores
     nodos_seleccionados = st.multiselect(
         "👆 Lista de pedidos (Manual):",
         options=lista_pedidos_disponibles,
@@ -140,15 +138,13 @@ if nodos_seleccionados:
 
 lista_pedido = list(set(lista_pedido))
 
-# ==========================================
-# 5. RENDERIZADO DEL RESULTADO
-# ==========================================
+
+# RENDERIZADO DEL RESULTADO
 col1, col2 = st.columns([2, 1])
 
 if calcular:
     if not lista_pedido:
         st.warning("⚠️ Por favor, ingresa al menos un pedido de destino.")
-        # Try/Except por si falla Graphviz
         try:
             mapa_vacio = generar_mapa_graphviz_coordenadasa(Adyacencia, archivo_nodos)
             st.graphviz_chart(mapa_vacio, use_container_width=True)
