@@ -3,8 +3,8 @@ import pandas as pd
 import graphviz
 import os
 
-archivo_nodos = "Nodos_Almacen_PlanB_1500.csv"
-archivo_aristas = "Aristas_Almacen_PlanB_1500.csv"
+archivo_nodos = "Nodos_Almacen.csv"
+archivo_aristas = "Aristas_Almacen.csv"
 
 from dataset_loader import crear_lista_adyacencia
 from graph_engine import procesar_pedido_por_zonas
