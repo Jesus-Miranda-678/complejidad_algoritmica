@@ -34,10 +34,7 @@ lista_pedidos_disponibles = df_solo_racks.apply(formatear_pedido_para_ui, axis=1
 
 
 def generar_mapa_graphviz_coordenadasa(la, ruta_nodos_csv, ruta_optima=[]):
-    """
-    Renderiza el grafo usando 'neato' con coordenadas fijas.
-    Optimizada para evitar que Streamlit colapse por tamaño excesivo.
-    """
+    
     dot = graphviz.Graph(engine='neato')
     
  
