@@ -55,7 +55,7 @@ def generar_mapa_graphviz_coordenadasa(la, ruta_nodos_csv, ruta_optima=[]):
     for _, row in df_nodos.iterrows():
         nodo_id = str(row['node_id'])
         tipo = row['type']
-        sector = str(row['sector']) if 'sector' in row and pd.notna(row['sector']) else ""
+       
         
       
         x = float(row['x']) / 5.0
